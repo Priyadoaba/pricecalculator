@@ -1,6 +1,6 @@
 # pricecalulator
 
-[![build](https://github.com/Priyadoaba/pricecalculator/actions/workflows/ci.yml/badge.svg)](https://github.com/priyadoaba/Pricecalulator/actions/workflows/ci.yml)
+[![ci](https://github.com/Priyadoaba/pricecalculator/actions/workflows/ci.yml/badge.svg)](https://github.com/Priyadoaba/pricecalculator/actions/workflows/ci.yml)
 
 The application is based on spring boot framework 
 and is a simple price calculator for a watch cart based on pre-populated watch details with or without discount.
