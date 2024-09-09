@@ -1,0 +1,38 @@
+name: ci
+
+on:
+  push:
+    branches:
+      - "**"
+    paths-ignore:
+      - "*.md"
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v4
+    - uses: actions/setup-java@v4
+      with:
+        distribution: 'oracle'
+        java-version: '22'
+        cache: 'maven'
+
+      # Running Unit tests
+    - name: Unit test
+      run: mvn -B clean test
+
+      # Running Integration tests
+    - name: Integration test
+      run: mvn -B clean verify -Dskip.surefire.tests
+
+      # Build Application
+    - name: Build package
+      run: mvn -B clean package -DskipTests
+
+      # Build Docker Application
+    - name: docker build
+      if: github.ref == 'refs/heads/main'
+      run: docker build -t pricecalculator .
+
+  

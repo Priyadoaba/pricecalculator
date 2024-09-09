@@ -1,0 +1,8 @@
+.idea/
+target/
+*.iml
+*.versionsBackup
+env/grafana/tmp
+env/prometheus/tmp
+requests.http
+.DSStore

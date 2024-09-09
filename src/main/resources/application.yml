@@ -1,0 +1,43 @@
+spring:
+  profiles:
+    active: local
+  datasource:
+    url: jdbc:h2:mem:mydb
+    driverClassName: org.h2.Driver
+  jpa:
+    hibernate:
+      ddl-auto: none
+    show-sql: false
+  sql:
+    init:
+      schema-locations: classpath:db/schema.sql
+      data-locations: classpath:db/data.sql
+      mode: always
+
+springdoc:
+  api-docs:
+    enabled: true
+  swagger-ui:
+    # Enable or disable swagger-ui
+    enabled: true
+    path: /swagger-ui.html
+
+logging:
+  level:
+    root: info
+    org.springframework.web.filter.CommonsRequestLoggingFilter: debug
+
+---
+spring:
+  config:
+    activate:
+      on-profile: dev
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: prometheus
+  endpoint:
+    prometheus:
+      enabled: true
